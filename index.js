@@ -93,6 +93,24 @@ class WebAppManifestPlugin {
             href: appleIcon.src,
           }]);
         }
+        const maskableIcon = icons && icons.find(icon => icon.purpose === 'maskable');
+        if (maskableIcon && themeColor) {
+          tags.push(['link', {
+            rel: 'mask-icon',
+            href: maskableIcon.src,
+            color: themeColor,
+          }]);
+        }
+        if (source.manifest.display === 'standalone') {
+          tags.push(['meta', {
+            name: 'apple-mobile-web-app-capable',
+            content: 'yes',
+          }]);
+          tags.push(['meta', {
+            name: 'apple-mobile-web-app-status-bar-style',
+            content: 'default',
+          }]);
+        }
         data.head.unshift(
           ...tags.map(([tagName, attributes]) => ({tagName, attributes})),
         );
