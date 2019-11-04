@@ -27,8 +27,8 @@ function generateFilename(name, source, page) {
 }
 
 const defaultOptions = {
-  name: 'manifest.[hash:8].json',
-  template: 'manifest.json',
+  name: 'manifest.[hash:8].webmanifest',
+  template: 'manifest.webmanifest',
   assign: {},
   metas: ['theme-color'],
 };
