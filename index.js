@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const crypto = require('crypto');
+const fs = require('fs');
 
 function capitalize(str) {
   str = String(str);
@@ -9,6 +10,15 @@ function capitalize(str) {
 
 function hash(source, algo, length) {
   return crypto.createHash(algo).update(source).digest('hex').slice(0, length);
+}
+
+async function loadJSON(path) {
+  try {
+    const content = await fs.promises.readFile(path);
+    return JSON.parse(content);
+  } catch (err) {
+    return undefined;
+  }
 }
 
 function getHTMLHooks(compilation, name) {
@@ -43,9 +53,9 @@ class WebAppManifestPlugin {
   apply(compiler) {
     const pluginName = this.constructor.name;
     compiler.hooks.compilation.tap(pluginName, (compilation) => {
-      getHTMLHooks(compilation, 'beforeHtmlProcessing').tap(pluginName, async data => {
+      getHTMLHooks(compilation, 'beforeHtmlProcessing').tapPromise(pluginName, async data => {
         const page = path.basename(data.outputName, '.html');
-        const template = require(this.options.template);
+        const template = await loadJSON(this.options.template);
         const manifest = {
           ...template,
           ...this.options.assign[page],
