@@ -1,6 +1,6 @@
 {
   "name": "@byted-star/web-app-manifest-plugin",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Generate manifest.json for multiple page website.",
   "main": "index.js",
   "author": "sunxiaoran@bytedance.com",
