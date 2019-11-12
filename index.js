@@ -76,7 +76,7 @@ class WebAppManifestPlugin {
         if (!source) return data;
         let href = source.output;
         if (compilation.options.output.publicPath) {
-          href = path.join(compilation.options.output.publicPath, href);
+          href = compilation.options.output.publicPath + href;
         }
         const tags = [
           ['link', {rel: 'manifest', href}],
