@@ -1,11 +1,12 @@
 {
-  "name": "@byted-star/web-app-manifest-plugin",
-  "version": "1.0.4",
-  "description": "Generate manifest.json for multiple page website.",
+  "name": "inject-web-manifest-plugin",
+  "version": "1.0.5",
+  "description": "Inject manifest.webmanifest for multiple page website.",
   "main": "index.js",
+  "types": "typings.d.ts",
   "author": "sunxiaoran@bytedance.com",
   "license": "MIT",
   "peerDependencies": {
-    "html-webpack-plugin": "^3.2.0"
+    "html-webpack-plugin": ">=3.0.0"
   }
 }

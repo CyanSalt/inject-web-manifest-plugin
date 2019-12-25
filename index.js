@@ -2,6 +2,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const crypto = require('crypto');
 const fs = require('fs');
+const util = require('util');
+
+const readFile = util.promisify(fs.readFile)
 
 function capitalize(str) {
   str = String(str);
@@ -14,7 +17,7 @@ function hash(source, algo, length) {
 
 async function loadJSON(path) {
   try {
-    const content = await fs.promises.readFile(path);
+    const content = await readFile(path);
     return JSON.parse(content);
   } catch (err) {
     return undefined;
@@ -40,10 +43,9 @@ const defaultOptions = {
   name: 'manifest.[hash:8].webmanifest',
   template: 'manifest.webmanifest',
   assign: {},
-  metas: ['theme-color'],
 };
 
-class WebAppManifestPlugin {
+class InjectWebManifestPlugin {
 
   constructor(options) {
     this.options = {...options, defaultOptions};
@@ -138,4 +140,4 @@ class WebAppManifestPlugin {
   }
 }
 
-module.exports = WebAppManifestPlugin;
+module.exports = InjectWebManifestPlugin;
