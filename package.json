@@ -2,11 +2,19 @@
   "name": "inject-web-manifest-plugin",
   "version": "1.0.5",
   "description": "Inject manifest.webmanifest for multiple page website.",
+  "author": "CyanSalt <c.salt@hotmail.com>",
   "main": "index.js",
   "types": "typings.d.ts",
-  "author": "sunxiaoran@bytedance.com",
   "license": "MIT",
   "peerDependencies": {
     "html-webpack-plugin": ">=3.0.0"
-  }
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "manifest"
+  ],
+  "bugs": "https://github.com/CyanSalt/inject-web-manifest-plugin/issues",
+  "homepage": "https://github.com/CyanSalt/inject-web-manifest-plugin",
+  "repository": "https://github.com/CyanSalt/inject-web-manifest-plugin.git"
 }
