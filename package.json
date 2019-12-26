@@ -1,6 +1,6 @@
 {
   "name": "inject-web-manifest-plugin",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Inject manifest.webmanifest for multiple page website.",
   "author": "CyanSalt <c.salt@hotmail.com>",
   "main": "index.js",
